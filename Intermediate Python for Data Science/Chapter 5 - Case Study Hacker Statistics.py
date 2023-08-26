@@ -32,12 +32,12 @@ step = 50
 dice = np.random.randint(1,7)
 
 # Finish the control construct
-if dice <= 2 :
-    step = step - 1
-elif dice <= 5 :
-    step = step + 1
-else :
-    step = step + np.random.randint(1,7)
+if dice <= 2:
+    step -= 1
+elif dice <= 5:
+    step += 1
+else:
+    step += np.random.randint(1,7)
 
 # Print out dice and step
 print(dice)
@@ -52,7 +52,7 @@ np.random.seed(123)
 random_walk = [0]
 
 # Complete the ___
-for x in range(100) :
+for _ in range(100):
     # Set step: last element in random_walk
     step = random_walk[-1]
 
@@ -81,7 +81,7 @@ np.random.seed(123)
 # Initialize random_walk
 random_walk = [0]
 
-for x in range(100) :
+for _ in range(100):
     step = random_walk[-1]
     dice = np.random.randint(1,7)
 
@@ -103,7 +103,7 @@ import numpy as np
 np.random.seed(123)
 random_walk = [0]
 
-for x in range(100) :
+for _ in range(100):
     step = random_walk[-1]
     dice = np.random.randint(1,7)
 
@@ -137,11 +137,10 @@ np.random.seed(123)
 all_walks = []
 
 # Simulate random walk 10 times
-for i in range(10) :
-
+for _ in range(10):
     # Code from before
     random_walk = [0]
-    for x in range(100) :
+    for _ in range(100):
         step = random_walk[-1]
         dice = np.random.randint(1,7)
 
@@ -165,9 +164,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 np.random.seed(123)
 all_walks = []
-for i in range(10) :
+for _ in range(10):
     random_walk = [0]
-    for x in range(100) :
+    for _ in range(100):
         step = random_walk[-1]
         dice = np.random.randint(1,7)
         if dice <= 2:
@@ -205,7 +204,7 @@ np.random.seed(123)
 # Initialize random_walk
 random_walk = [0]
 
-for x in range(100) :
+for _ in range(100):
     step = random_walk[-1]
     dice = np.random.randint(1,7)
 
@@ -229,9 +228,9 @@ np.random.seed(123)
 all_walks = []
 
 # Simulate random walk 250 times
-for i in range(250) :
+for _ in range(250):
     random_walk = [0]
-    for x in range(100) :
+    for _ in range(100):
         step = random_walk[-1]
         dice = np.random.randint(1,7)
         if dice <= 2:
@@ -261,9 +260,9 @@ all_walks = []
 
 
 # Simulate random walk 500 times
-for i in range(500) :
+for _ in range(500):
     random_walk = [0]
-    for x in range(100) :
+    for _ in range(100):
         step = random_walk[-1]
         dice = np.random.randint(1,7)
         if dice <= 2:

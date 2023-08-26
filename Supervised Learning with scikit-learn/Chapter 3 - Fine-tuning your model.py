@@ -81,7 +81,7 @@ from sklearn.metrics import roc_auc_score
 y_pred_prob = logreg.predict_proba(X_test)[:,1]
 
 # Compute and print AUC score
-print("AUC: {}".format(roc_auc_score(y_test, y_pred_prob)))
+print(f"AUC: {roc_auc_score(y_test, y_pred_prob)}")
 
 
 
@@ -89,7 +89,7 @@ print("AUC: {}".format(roc_auc_score(y_test, y_pred_prob)))
 cv_auc = cross_val_score(logreg, X, y, cv=5, scoring='roc_auc')
 
 # Print list of AUC scores
-print("AUC scores computed using 5-fold cross-validation: {}".format(cv_auc))
+print(f"AUC scores computed using 5-fold cross-validation: {cv_auc}")
 
 
 
@@ -114,8 +114,8 @@ logreg_cv = GridSearchCV(logreg, param_grid, cv=5)
 logreg_cv.fit(X, y)
 
 # Print the tuned parameter and score
-print("Tuned Logistic Regression Parameters: {}".format(logreg_cv.best_params_))
-print("Best score is {}".format(logreg_cv.best_score_))
+print(f"Tuned Logistic Regression Parameters: {logreg_cv.best_params_}")
+print(f"Best score is {logreg_cv.best_score_}")
 
 
 
@@ -142,8 +142,8 @@ tree_cv = RandomizedSearchCV(tree, param_dist, cv=5)
 tree_cv.fit(X, y)
 
 # Print the tuned parameters and score
-print("Tuned Decision Tree Parameters: {}".format(tree_cv.best_params_))
-print("Best score is {}".format(tree_cv.best_score_))
+print(f"Tuned Decision Tree Parameters: {tree_cv.best_params_}")
+print(f"Best score is {tree_cv.best_score_}")
 
 
 
@@ -173,8 +173,8 @@ logreg_cv = GridSearchCV(logreg, param_grid, cv=5)
 logreg_cv.fit(X_train, y_train)
 
 # Print the optimal parameters and best score
-print("Tuned Logistic Regression Parameter: {}".format(logreg_cv.best_params_))
-print("Tuned Logistic Regression Accuracy: {}".format(logreg_cv.best_score_))
+print(f"Tuned Logistic Regression Parameter: {logreg_cv.best_params_}")
+print(f"Tuned Logistic Regression Accuracy: {logreg_cv.best_score_}")
 
 #==============================================================================================================================#
 #Hold-out set in practice II: Regression
@@ -204,9 +204,9 @@ gm_cv.fit(X_train, y_train)
 y_pred = gm_cv.predict(X_test)
 r2 = gm_cv.score(X_test, y_test)
 mse = mean_squared_error(y_test, y_pred)
-print("Tuned ElasticNet l1 ratio: {}".format(gm_cv.best_params_))
-print("Tuned ElasticNet R squared: {}".format(r2))
-print("Tuned ElasticNet MSE: {}".format(mse))
+print(f"Tuned ElasticNet l1 ratio: {gm_cv.best_params_}")
+print(f"Tuned ElasticNet R squared: {r2}")
+print(f"Tuned ElasticNet MSE: {mse}")
 
 
 

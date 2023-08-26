@@ -2,10 +2,10 @@
 
 #Equality
 # Comparison of booleans
-print(True == False)
+print(not True)
 
 # Comparison of integers
-print(-5 * 15 != 75)
+print(-5 != 5)
 
 # Comparison of strings
 print("pyscript" == "PyScript")
@@ -101,11 +101,11 @@ room = "bed"
 area = 14.0
 
 # if-elif-else construct for room
-if room == "kit" :
-    print("looking around in the kitchen.")
-elif room == "bed":
+if room == "bed":
     print("looking around in the bedroom.")
-else :
+elif room == "kit":
+    print("looking around in the kitchen.")
+else:
     print("looking around elsewhere.")
 
 # if-elif-else construct for area

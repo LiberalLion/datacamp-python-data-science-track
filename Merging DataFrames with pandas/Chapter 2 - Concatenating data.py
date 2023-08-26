@@ -41,15 +41,7 @@ print(quarter1.loc['feb 26, 2015':'mar 7, 2015'])
 # Compute & print total sales in quarter1
 print(quarter1.sum())
 
-#--------------------------------------------------------------------------------------------#
-#Concatenating pandas Series along row axis
-# Initialize empty list: units
-units = []
-
-# Build the list of Series
-for month in [jan, feb, mar]:
-    units.append(month['Units'])
-
+units = [month['Units'] for month in [jan, feb, mar]]
 # Concatenate the list: quarter1
 quarter1 = pd.concat(units, axis='rows')
 
@@ -90,11 +82,11 @@ print(weather)
 for medal in medal_types:
     
     # Create the file name: file_name
-    file_name = "%s_top5.csv" % medal
-    
+    file_name = f"{medal}_top5.csv"
+
     # Create list of column names: columns
     columns = ['Country', medal]
-    
+
     # Read file_name into a DataFrame: df
     medal_df = pd.read_csv(file_name,header=0, index_col='Country',names=columns)
 
@@ -111,11 +103,11 @@ print(medals)
 #Concatenating vertically to get MultiIndexed rows
 for medal in medal_types:
     
-    file_name = "%s_top5.csv" % medal
+    file_name = f"{medal}_top5.csv"
 
     # Read file_name into a DataFrame: medal_df
     medal_df = pd.read_csv(file_name, index_col='Country')
-    
+
     # Append medal_df to medals
     medals.append(medal_df)
 
@@ -167,14 +159,10 @@ print(slice_2_8)
 # Make the list of tuples: month_list
 month_list = [('january', jan), ('february', feb), ('march', mar)]
 
-# Create an empty dictionary: month_dict
-month_dict = {}
-
-for month_name, month_data in month_list:
-
-    # Group month_data: month_dict[month_name]
-    month_dict[month_name] = month_data.groupby('Company').sum()
-
+month_dict = {
+    month_name: month_data.groupby('Company').sum()
+    for month_name, month_data in month_list
+}
 # Concatenate data in month_dict: sales
 sales = pd.concat(month_dict)
 

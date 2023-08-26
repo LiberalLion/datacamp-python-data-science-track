@@ -45,7 +45,7 @@ model.add(Dense(1))
 model.compile(optimizer='adam',loss='mean_squared_error')
 
 # Verify that model contains information from compiling
-print("Loss function: " + model.loss)
+print(f"Loss function: {model.loss}")
 
 #------------------------------------------------------------------------------------------------------------------------$
 

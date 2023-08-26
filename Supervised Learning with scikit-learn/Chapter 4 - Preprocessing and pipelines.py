@@ -62,13 +62,15 @@ df[df == '?'] = np.nan
 print(df.isnull().sum())
 
 # Print shape of original DataFrame
-print("Shape of Original DataFrame: {}".format(df.shape))
+print(f"Shape of Original DataFrame: {df.shape}")
 
 # Drop missing values and print shape of new DataFrame
 df = df.dropna()
 
 # Print shape of new DataFrame
-print("Shape of DataFrame After Dropping All Rows with Missing Values: {}".format(df.shape))
+print(
+    f"Shape of DataFrame After Dropping All Rows with Missing Values: {df.shape}"
+)
 
 
 #==============================================================================================================================#
@@ -100,7 +102,7 @@ from sklearn.svm import SVC
 # Setup the pipeline steps: steps
 steps = [('imputation', Imputer(missing_values='NaN', strategy='most_frequent', axis=0)),
         ('SVM', SVC())]
-        
+
 # Create the pipeline: pipeline
 pipeline = Pipeline(steps)
 
@@ -127,12 +129,12 @@ from sklearn.preprocessing import scale
 X_scaled = scale(X)
 
 # Print the mean and standard deviation of the unscaled features
-print("Mean of Unscaled Features: {}".format(np.mean(X))) 
-print("Standard Deviation of Unscaled Features: {}".format(np.std(X)))
+print(f"Mean of Unscaled Features: {np.mean(X)}")
+print(f"Standard Deviation of Unscaled Features: {np.std(X)}")
 
 # Print the mean and standard deviation of the scaled features
-print("Mean of Scaled Features: {}".format(np.mean(X_scaled))) 
-print("Standard Deviation of Scaled Features: {}".format(np.std(X_scaled)))
+print(f"Mean of Scaled Features: {np.mean(X_scaled)}")
+print(f"Standard Deviation of Scaled Features: {np.std(X_scaled)}")
 
 
 
@@ -145,7 +147,7 @@ from sklearn.pipeline import Pipeline
 # Setup the pipeline
 steps = [('scaler', StandardScaler()),
         ('knn', KNeighborsClassifier())]
-        
+
 # Create the pipeline: pipeline
 pipeline = Pipeline(steps)
 
@@ -159,8 +161,8 @@ knn_scaled = pipeline.fit(X_train, y_train)
 knn_unscaled = KNeighborsClassifier().fit(X_train, y_train)
 
 # Compute and print metrics
-print('Accuracy with Scaling: {}'.format(knn_scaled.score(X_test, y_test)))
-print('Accuracy without Scaling: {}'.format(knn_unscaled.score(X_test, y_test)))
+print(f'Accuracy with Scaling: {knn_scaled.score(X_test, y_test)}')
+print(f'Accuracy without Scaling: {knn_unscaled.score(X_test, y_test)}')
 
 
 
@@ -189,9 +191,9 @@ cv.fit(X_train, y_train)
 y_pred = cv.predict(X_test)
 
 # Compute and print metrics
-print("Accuracy: {}".format(cv.score(X_test, y_test)))
+print(f"Accuracy: {cv.score(X_test, y_test)}")
 print(classification_report(y_test, y_pred))
-print("Tuned Model Parameters: {}".format(cv.best_params_))
+print(f"Tuned Model Parameters: {cv.best_params_}")
 
 
 
@@ -203,7 +205,7 @@ print("Tuned Model Parameters: {}".format(cv.best_params_))
 steps = [('imputation', Imputer(missing_values='NaN', strategy='mean', axis=0)),
          ('scaler', StandardScaler()),
          ('elasticnet', ElasticNet())]
-         
+
 # Create the pipeline: pipeline
 pipeline = Pipeline(steps)
 
@@ -221,8 +223,8 @@ gm_cv.fit(X_train, y_train)
 
 # Compute and print the metrics
 r2 = gm_cv.score(X_test, y_test)
-print("Tuned ElasticNet Alpha: {}".format(gm_cv.best_params_))
-print("Tuned ElasticNet R squared: {}".format(r2))
+print(f"Tuned ElasticNet Alpha: {gm_cv.best_params_}")
+print(f"Tuned ElasticNet R squared: {r2}")
 
 
 #==============================================================================================================================#

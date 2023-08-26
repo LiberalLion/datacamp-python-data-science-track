@@ -158,9 +158,7 @@ def train_and_predict(alpha):
     nb_classifier.fit(tfidf_train, y_train)
     # Predict the labels: pred
     pred = nb_classifier.predict(tfidf_test)
-    # Compute accuracy: score
-    score = metrics.accuracy_score(y_test, pred)
-    return score
+    return metrics.accuracy_score(y_test, pred)
 
 # Iterate over the alphas and print the corresponding score
 for alpha in alphas:

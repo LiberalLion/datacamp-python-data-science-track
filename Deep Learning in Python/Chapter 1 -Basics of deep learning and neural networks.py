@@ -24,11 +24,7 @@ print(output)
 #The Rectified Linear Activation Function
 def relu(input):
     '''Define your relu activation function here'''
-    # Calculate the value for the output of the relu function: output
-    output = max(0, input)
-    
-    # Return the value just calculated
-    return(output)
+    return max(0, input)
 
 # Calculate node 0 value: node_0_output
 node_0_input = (input_data * weights['node_0']).sum()
@@ -62,21 +58,17 @@ def predict_with_network(input_data_row, weights):
 
     # Put node values into array: hidden_layer_outputs
     hidden_layer_outputs = np.array([node_0_output, node_1_output])
-    
+
     # Calculate model output
     input_to_final_layer = (hidden_layer_outputs * weights['output']).sum()
-    model_output = relu(input_to_final_layer)
-    
-    # Return model output
-    return(model_output)
+    return relu(input_to_final_layer)
 
 
 # Create empty list to store prediction results
-results = []
-for input_data_row in input_data:
-    # Append prediction to results
-    results.append(predict_with_network(input_data_row, weights))
-
+results = [
+    predict_with_network(input_data_row, weights)
+    for input_data_row in input_data
+]
 # Print results
 print(results)
 
@@ -104,12 +96,8 @@ def predict_with_network(input_data):
 
     # Put node values into array: hidden_1_outputs
     hidden_1_outputs = np.array([node_1_0_output, node_1_1_output])
-    
-    # Calculate output here: model_output
-    model_output = (hidden_1_outputs * weights['output']).sum()
-    
-    # Return model_output
-    return(model_output)
+
+    return (hidden_1_outputs * weights['output']).sum()
 
 output = predict_with_network(input_data)
 print(output)

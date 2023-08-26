@@ -16,7 +16,7 @@ print(result)
 spells = ['protego', 'accio', 'expecto patronum', 'legilimens']
 
 # Use map() to apply a lambda function over spells: shout_spells
-shout_spells = map(lambda item: item + '!!!', spells)
+shout_spells = map(lambda item: f'{item}!!!', spells)
 
 # Convert shout_spells to a list: shout_spells_list
 shout_spells_list = list(shout_spells)
@@ -66,7 +66,7 @@ def shout_echo(word1, echo=1):
         echo_word = word1 * echo
 
         # Concatenate '!!!' to echo_word: shout_words
-        shout_words = echo_word + '!!!'
+        shout_words = f'{echo_word}!!!'
     except:
         # Print error message
         print("word1 must be a string and echo must be an integer.")
@@ -91,18 +91,14 @@ def shout_echo(word1, echo=1):
     # Concatenate echo copies of word1 using *: echo_word
     echo_word = word1 * echo
 
-    # Concatenate '!!!' to echo_word: shout_word
-    shout_word = echo_word + '!!!'
-
-    # Return shout_word
-    return shout_word
+    return f'{echo_word}!!!'
 
 # Call shout_echo
 shout_echo("particle", echo=5)
 
 #Bringing it all together (1)
 # Select retweets from the Twitter DataFrame: result
-result = filter(lambda x: x[0:2] == 'RT', tweets_df['text'])
+result = filter(lambda x: x[:2] == 'RT', tweets_df['text'])
 
 # Create list from filter object result: res_list
 res_list = list(result)
@@ -124,23 +120,21 @@ def count_entries(df, col_name='lang'):
     try:
         # Extract column from DataFrame: col
         col = df[col_name]
-        
+
         # Iterate over the column in dataframe
         for entry in col:
-    
+            
             # If entry is in cols_count, add 1
-            if entry in cols_count.keys():
+            if entry in cols_count:
                 cols_count[entry] += 1
-            # Else add the entry to cols_count, set the value to 1
             else:
                 cols_count[entry] = 1
-    
+
         # Return the cols_count dictionary
         return cols_count
 
-    # Add except block
     except:
-        print('The DataFrame does not have a ' + col_name + ' column.')
+        print(f'The DataFrame does not have a {col_name} column.')
 
 # Call count_entries(): result1
 result1 = count_entries(tweets_df, 'lang')
@@ -159,25 +153,25 @@ def count_entries(df, col_name='lang'):
     
     # Raise a ValueError if col_name is NOT in DataFrame
     if col_name not in df.columns:
-        raise ValueError('The DataFrame does not have a ' + col_name + ' column.')
+        raise ValueError(f'The DataFrame does not have a {col_name} column.')
 
     # Initialize an empty dictionary: cols_count
     cols_count = {}
-    
+
     # Extract column from DataFrame: col
     col = df[col_name]
-    
+
     # Iterate over the column in DataFrame
     for entry in col:
 
         # If entry is in cols_count, add 1
-        if entry in cols_count.keys():
+        if entry in cols_count:
             cols_count[entry] += 1
             # Else add the entry to cols_count, set the value to 1
         else:
             cols_count[entry] = 1
-        
-        # Return the cols_count dictionary
+            
+            # Return the cols_count dictionary
     return cols_count
 
 # Call count_entries(): result1

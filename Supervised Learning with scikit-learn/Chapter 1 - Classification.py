@@ -41,7 +41,7 @@ y_pred = knn.predict(X)
 
 # Predict and print the label for the new data point X_new
 new_prediction = knn.predict(X_new)
-print("Prediction: {}".format(new_prediction)) 
+print(f"Prediction: {new_prediction}") 
 
 
 
@@ -71,7 +71,7 @@ plt.show()
 #==============================================================================================================================#
 #Train/Test Split + Fit/Predict/Accuracy
 # Import necessary modules
-from sklearn.neighbors import KNeighborsClassifier 
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 
 # Create feature and target arrays
@@ -108,7 +108,7 @@ for i, k in enumerate(neighbors):
 
     # Fit the classifier to the training data
     knn.fit(X_train, y_train)
-    
+
     #Compute accuracy on the training set
     train_accuracy[i] = knn.score(X_train, y_train)
 
@@ -141,16 +141,16 @@ y = df['life'].values
 X = df['fertility'].values
 
 # Print the dimensions of X and y before reshaping
-print("Dimensions of y before reshaping: {}".format(y.shape))
-print("Dimensions of X before reshaping: {}".format(X.shape))
+print(f"Dimensions of y before reshaping: {y.shape}")
+print(f"Dimensions of X before reshaping: {X.shape}")
 
 # Reshape X and y
 y = y.reshape(-1, 1)
 X = X.reshape(-1, 1)
 
 # Print the dimensions of X and y after reshaping
-print("Dimensions of y after reshaping: {}".format(y.shape))
-print("Dimensions of X after reshaping: {}".format(X.shape))
+print(f"Dimensions of y after reshaping: {y.shape}")
+print(f"Dimensions of X after reshaping: {X.shape}")
 
 
 #==============================================================================================================================#

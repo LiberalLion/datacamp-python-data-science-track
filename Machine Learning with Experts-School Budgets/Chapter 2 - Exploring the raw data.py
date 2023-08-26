@@ -19,11 +19,11 @@ X_train, X_test, y_train, y_test = multilabel_train_test_split(numeric_data_only
 # Print the info
 print("X_train info:")
 print(X_train.info())
-print("\nX_test info:")  
+print("\nX_test info:")
 print(X_test.info())
-print("\ny_train info:")  
+print("\ny_train info:")
 print(y_train.info())
-print("\ny_test info:")  
+print("\ny_test info:")
 print(y_test.info()) 
 
 
@@ -49,7 +49,7 @@ clf = OneVsRestClassifier(LogisticRegression())
 clf.fit(X_train,y_train)
 
 # Print the accuracy
-print("Accuracy: {}".format(clf.score(X_test, y_test)))
+print(f"Accuracy: {clf.score(X_test, y_test)}")
 
 #=================================================================================================================================================@
 #Use your model to predict values on holdout data
@@ -86,7 +86,9 @@ prediction_df.to_csv('predictions.csv')
 score = score_submission(pred_path='predictions.csv')
 
 # Print score
-print('Your model, trained with numeric data only, yields logloss score: {}'.format(score))
+print(
+    f'Your model, trained with numeric data only, yields logloss score: {score}'
+)
 
 #=================================================================================================================================================@
 #Creating a bag-of-words in scikit-learn
@@ -152,13 +154,15 @@ text_vector = combine_text_columns(df)
 vec_basic.fit_transform(text_vector)
 
 # Print number of tokens of vec_basic
-print("There are {} tokens in the dataset".format(len(vec_basic.get_feature_names())))
+print(f"There are {len(vec_basic.get_feature_names())} tokens in the dataset")
 
 # Fit and transform vec_alphanumeric
 vec_alphanumeric.fit_transform(text_vector)
 
 # Print number of tokens of vec_alphanumeric
-print("There are {} alpha-numeric tokens in the dataset".format(len(vec_alphanumeric.get_feature_names())))
+print(
+    f"There are {len(vec_alphanumeric.get_feature_names())} alpha-numeric tokens in the dataset"
+)
 
 #=================================================================================================================================================@
 

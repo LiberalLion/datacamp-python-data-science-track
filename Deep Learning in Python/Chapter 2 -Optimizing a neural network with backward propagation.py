@@ -52,7 +52,7 @@ model_output_1 = []
 for row in input_data:
     # Append prediction to model_output_0
     model_output_0.append(predict_with_network(row, weights_0))
-    
+
     # Append prediction to model_output_1
     model_output_1.append(predict_with_network(row, weights_1))
 
@@ -118,16 +118,16 @@ n_updates = 20
 mse_hist = []
 
 # Iterate over the number of updates
-for i in range(n_updates):
+for _ in range(n_updates):
     # Calculate the slope: slope
     slope = get_slope(input_data, target, weights)
-    
+
     # Update the weights: weights
     weights = weights - 0.01 * slope
-    
+
     # Calculate mse with new weights: mse
     mse = get_mse(input_data, target, weights)
-    
+
     # Append the mse to mse_hist
     mse_hist.append(mse)
 

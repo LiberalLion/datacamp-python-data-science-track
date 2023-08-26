@@ -30,7 +30,9 @@ def three_shouts(word1, word2, word3):
     # Define inner
     def inner(word):
         """Returns a string concatenated with '!!!'."""
-        return word + '!!!'
+        return f'{word}!!!'
+
+        # Return a tuple of strings
 
     # Return a tuple of strings
     return (inner(word1), inner(word2), inner(word3))
@@ -68,20 +70,22 @@ def echo_shout(word):
     
     # Concatenate word with itself: echo_word
     echo_word = word*2
-    
+
     #Print echo_word
     print(echo_word)
-    
+
     # Define inner function shout()
     def shout():
         """Alter a variable in the enclosing scope"""
         
         #Use echo_word in nonlocal scope
         nonlocal echo_word
-        
+
         #Change echo_word to echo_word concatenated with '!!!'
-        echo_word = echo_word + '!!!'
-    
+        echo_word = f'{echo_word}!!!'
+        
+        # Call function shout()
+
     # Call function shout()
     shout()
 
@@ -100,11 +104,7 @@ def shout_echo(word1, echo=1):
     # Concatenate echo copies of word1 using *: echo_word
     echo_word = word1*echo
 
-    # Concatenate '!!!' to echo_word: shout_word
-    shout_word = echo_word + '!!!'
-
-    # Return shout_word
-    return shout_word
+    return f'{echo_word}!!!'
 
 # Call shout_echo() with "Hey": no_echo
 no_echo =shout_echo("Hey")
@@ -126,16 +126,7 @@ def shout_echo(word1, echo=1, intense=False):
     # Concatenate echo copies of word1 using *: echo_word
     echo_word = word1 * echo
 
-    # Capitalize echo_word if intense is True
-    if intense is True:
-        # Capitalize and concatenate '!!!': echo_word_new
-        echo_word_new = echo_word.upper() + '!!!'
-    else:
-        # Concatenate '!!!' to echo_word: echo_word_new
-        echo_word_new = echo_word + '!!!'
-
-    # Return echo_word_new
-    return echo_word_new
+    return f'{echo_word.upper()}!!!' if intense is True else f'{echo_word}!!!'
 
 # Call shout_echo() with "Hey", echo=5 and intense=True: with_big_echo
 with_big_echo = shout_echo("Hey",echo=5 ,intense=True)
@@ -151,15 +142,7 @@ print(big_no_echo)
 def gibberish(*args):
     """Concatenate strings in *args together."""
 
-    # Initialize an empty string: hodgepodge
-    hodgepodge=""
-
-    # Concatenate the strings in args
-    for word in args:
-        hodgepodge += word
-
-    # Return hodgepodge
-    return hodgepodge
+    return "".join(args)
 # Call gibberish() with one string: one_word
 one_word = gibberish("luke")
 
@@ -179,7 +162,7 @@ def report_status(**kwargs):
 
     # Print a formatted status report
     for key, value in kwargs.items():
-        print(key + ": " + value)
+        print(f"{key}: {value}")
 
     print("\nEND REPORT")
 
@@ -200,15 +183,14 @@ def count_entries(df,col_name='lang'):
 
     # Extract column from DataFrame: col
     col = df[col_name]
-    
+
     # Iterate over the column in DataFrame
     for entry in col:
 
         # If entry is in cols_count, add 1
-        if entry in cols_count.keys():
+        if entry in cols_count:
             cols_count[entry] += 1
 
-        # Else add the entry to cols_count, set the value to 1
         else:
             cols_count[entry] = 1
 
@@ -233,21 +215,20 @@ def count_entries(df, *args):
     
     #Initialize an empty dictionary: cols_count
     cols_count = {}
-    
+
     # Iterate over column names in args
     for col_name in args:
-    
+
         # Extract column from DataFrame: col
         col = df[col_name]
-    
+
         # Iterate over the column in DataFrame
         for entry in col:
-    
+            
             # If entry is in cols_count, add 1
-            if entry in cols_count.keys():
+            if entry in cols_count:
                 cols_count[entry] += 1
-    
-            # Else add the entry to cols_count, set the value to 1
+
             else:
                 cols_count[entry] = 1
 

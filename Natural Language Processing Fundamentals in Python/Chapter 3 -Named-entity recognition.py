@@ -33,7 +33,7 @@ for sent in chunked_sentences:
     for chunk in sent:
         if hasattr(chunk, 'label'):
             ner_categories[chunk.label()] += 1
-            
+
 # Create a list from the dictionary keys for the chart labels: labels
 labels = list(ner_categories.keys())
 
@@ -72,7 +72,7 @@ txt = Text(article)
 # Print each of the entities found
 for ent in txt.entities:
     print(ent)
-    
+
 # Print the type of each entity
 print(type(ent))
 
@@ -87,19 +87,7 @@ print(entities)
 
 
 
-#---------------------------------------------------------------------------------------------------------------#
-
-#Spanish NER with polyglot
-# Initialize the count variable: count
-count = 0
-
-# Iterate over all the entities
-for ent in txt.entities:
-    # Check whether the entity contains 'Márquez' or 'Gabo'
-    if "Márquez" in ent or "Gabo" in ent:
-        # Increment count
-        count += 1
-
+count = sum(1 for ent in txt.entities if "Márquez" in ent or "Gabo" in ent)
 # Print count
 print(count)
 

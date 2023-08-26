@@ -13,7 +13,6 @@ engine = create_engine('sqlite:///chapter5.sqlite')
 # Initialize MetaData: metadata
 metadata = MetaData()
 
-                                                   #*******************************************************************************************#
 #Create the Table to the Database
 # Import Table, Column, String, and Integer
 from sqlalchemy import Table, Column, String, Integer
@@ -30,7 +29,6 @@ census = Table('census', metadata,
 metadata.create_all(engine)
 
 
-                                                   #*******************************************************************************************#
 #Reading the Data from the CSV
 
 # Create an empty list: values_list
@@ -59,8 +57,6 @@ results = connection.execute(stmt, values_list)
 # Print rowcount
 print(results.rowcount)
 
-
-                                                   #*******************************************************************************************#
 
 #Build a Query to Determine the Average Age by Population
 # Import select
@@ -130,7 +126,7 @@ results = connection.execute(stmt).fetchall()
 
 # Print the state and population change for each record
 for result in results:
-    print('{}:{}'.format(result.state, result.pop_change))
+    print(f'{result.state}:{result.pop_change}')
 
 
                                                    #*******************************************************************************************#

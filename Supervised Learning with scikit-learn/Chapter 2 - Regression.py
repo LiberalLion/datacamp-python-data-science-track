@@ -50,11 +50,11 @@ reg_all.fit(X_train, y_train)
 y_pred = reg_all.predict(X_test)
 
 # Compute and print R^2 and RMSE
-print("R^2: {}".format(reg_all.score(X_test, y_test)))
+print(f"R^2: {reg_all.score(X_test, y_test)}")
 rmse = np.sqrt(mean_squared_error(y_test, y_pred))
 
 
-print("Root Mean Squared Error: {}".format(rmse))
+print(f"Root Mean Squared Error: {rmse}")
 
 
 
@@ -74,7 +74,7 @@ cv_scores = cross_val_score(reg, X, y, cv=5)
 print(cv_scores)
 
 # Print the average 5-fold cross-validation score
-print("Average 5-Fold CV Score: {}".format(np.mean(cv_scores)))
+print(f"Average 5-Fold CV Score: {np.mean(cv_scores)}")
 
 
 
@@ -143,13 +143,13 @@ for alpha in alpha_space:
 
     # Specify the alpha value to use: ridge.alpha
     ridge.alpha = alpha
-    
+
     # Perform 10-fold CV: ridge_cv_scores
     ridge_cv_scores = cross_val_score(ridge, X, y, cv=10)
-    
+
     # Append the mean of ridge_cv_scores to ridge_scores
     ridge_scores.append(np.mean(ridge_cv_scores))
-    
+
     # Append the std of ridge_cv_scores to ridge_scores_std
     ridge_scores_std.append(np.std(ridge_cv_scores))
 

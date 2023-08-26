@@ -19,11 +19,7 @@ def lists2dict(list1, list2):
     # Zip lists: zipped_lists
     zipped_lists = zip(list1, list2)
 
-    # Create a dictionary: rs_dict
-    rs_dict = dict(zipped_lists)
-
-    # Return the dictionary
-    return rs_dict
+    return dict(zipped_lists)
 
 # Call lists2dict: rs_fxn
 rs_fxn = lists2dict(feature_names,row_vals)
@@ -68,8 +64,7 @@ with open('world_dev_ind.csv') as file:
     counts_dict = {}
 
     # Process only the first 1000 rows
-    for j in range(0,1000):
-
+    for _ in range(0,1000):
         # Split the current line into a list: line
         line = file.readline().split(',')
 
@@ -77,10 +72,9 @@ with open('world_dev_ind.csv') as file:
         first_col = line[0]
 
         # If the column value is in the dict, increment its value
-        if first_col in counts_dict.keys():
+        if first_col in counts_dict:
             counts_dict[first_col] += 1
 
-        # Else, add to the dict and set value to 1
         else:
             counts_dict[first_col] = 1
 
@@ -96,15 +90,11 @@ def read_large_file(file_object):
     # Loop indefinitely until the end of the file
     while True:
 
-        # Read a line from the file: data
-        data = file_object.readline()
-
-        # Break if this is the end of the file
-        if not data:
+        if data := file_object.readline():
+            # Yield the line of data
+            yield data
+        else:
             break
-
-        # Yield the line of data
-        yield data
 
 # Open a connection to the file
 with open('world_dev_ind.csv') as file:
@@ -131,7 +121,7 @@ with open('world_dev_ind.csv') as file:
         row = line.split(',')
         first_col = row[0]
 
-        if first_col in counts_dict.keys():
+        if first_col in counts_dict:
             counts_dict[first_col] += 1
         else:
             counts_dict[first_col] = 1
@@ -222,7 +212,7 @@ for df_urb_pop in urb_pop_reader:
 
     # Use list comprehension to create new DataFrame column 'Total Urban Population'
     df_pop_ceb['Total Urban Population'] = [int(tup[0] * tup[1]) for tup in pops_list]
-    
+
     # Append DataFrame chunk to data: data
     data = data.append(df_pop_ceb)
 

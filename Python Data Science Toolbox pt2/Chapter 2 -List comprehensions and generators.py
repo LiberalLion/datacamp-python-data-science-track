@@ -8,7 +8,7 @@ squares = [i**2 for i in range(0,10)]
 #Nested list comprehensions
 
 # Create a 5 x 5 matrix using a list of lists: matrix
-matrix = [[col for col in range(5)] for row in range(5)]
+matrix = [list(range(5)) for _ in range(5)]
 
 # Print the matrix
 for row in matrix:
@@ -50,7 +50,7 @@ print(new_fellowship)
 
 #Write your own generator expressions
 # Create generator object: result
-result = (num for num in range(31))
+result = iter(range(31))
 
 # Print the first 5 values
 print(next(result))

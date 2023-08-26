@@ -8,7 +8,7 @@ with open("a_movie.json") as json_file:
 
 # Print each key-value pair in json_data
 for k in json_data.keys():
-    print(k + ': ', json_data[k])
+    print(f'{k}: ', json_data[k])
 
 #API requests
 # Import requests package
@@ -38,7 +38,7 @@ json_data = r.json()
 
 # Print each key-value pair in json_data
 for k in json_data.keys():
-    print(k + ': ', json_data[k])
+    print(f'{k}: ', json_data[k])
 
 #Checking out the Wikipedia API
 # Import package

@@ -183,19 +183,19 @@ import numpy as np
 
 # Print mean height (first column)
 avg = np.mean(np_baseball[:,0])
-print("Average: " + str(avg))
+print(f"Average: {str(avg)}")
 
 # Print median height. Replace 'None'
 med = np.median(np_baseball[:,0])
-print("Median: " + str(med))
+print(f"Median: {str(med)}")
 
 # Print out the standard deviation on height. Replace 'None'
 stddev = np.std(np_baseball[:,0])
-print("Standard Deviation: " + str(stddev))
+print(f"Standard Deviation: {str(stddev)}")
 
 # Print out correlation between first and second column. Replace 'None'
 corr = np.corrcoef(np_baseball[:,0], np_baseball[:,1])
-print("Correlation: " + str(corr))
+print(f"Correlation: {str(corr)}")
 #---------------------------------------------------------------------------------------------------#
 
 #Blend it all together
@@ -215,10 +215,10 @@ gk_heights = np_heights[np_positions == 'GK']
 other_heights = np_heights[np_positions != 'GK']
 
 # Print out the median height of goalkeepers. Replace 'None'
-print("Median height of goalkeepers: " + str(np.median(gk_heights)))
+print(f"Median height of goalkeepers: {str(np.median(gk_heights))}")
 
 # Print out the median height of other players. Replace 'None'
-print("Median height of other players: " + str(np.median(other_heights)))
+print(f"Median height of other players: {str(np.median(other_heights))}")
 
 #---------------------------------------------------------------------------------------------------#
 

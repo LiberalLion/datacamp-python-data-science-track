@@ -2,17 +2,13 @@
 
 #Importing entire text files
 # Open a file: file
-file = open('moby_dick.txt' , mode='r')
+with open('moby_dick.txt' , mode='r') as file:
+    # Print it
+    print(file.read())
 
-# Print it
-print(file.read())
+    # Check whether file is closed
+    print(file.closed)
 
-# Check whether file is closed
-print(file.closed)
-
-# Close file
-
-file.close()
 # Check whether file is closed
 print(file.closed)
 

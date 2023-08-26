@@ -15,7 +15,6 @@ engine = create_engine('mysql+pymysql://'+'student:datacamp'+'@courses.csrrinzqu
 # Print the table names
 print(engine.table_names())
 
-                                                   #*******************************************************************************************#
 #Calculating a Difference between Two Columns
 
 # Build query to return state names by population difference from 2008 to 2000: stmt
@@ -35,7 +34,7 @@ results = connection.execute(stmt).fetchall()
 
 # Print the state and population change for each record
 for result in results:
-    print('{}:{}'.format(result.state, result.pop_change))
+    print(f'{result.state}:{result.pop_change}')
 
                                                    #*******************************************************************************************#
 
@@ -60,8 +59,6 @@ percent_female = connection.execute(stmt).scalar()
 
 # Print the percentage
 print(percent_female)
-
-                                                   #*******************************************************************************************#
 
 #Automatic Joins with an Established Relationship
 # Build a statement to join census and state_fact tables: stmt
